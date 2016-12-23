@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>snowing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <style>
+        html,body { height: 100%; }
+        @keyframes snow {
+            0%{
+                background-position: 0 0;
+            }
+            100%{
+                background-position: 500px 1000px,400px 400px,300px 300px;
+            }
+        }
+        body{
+            background-color: #6b92b9;
+            background-image:url("image/snow.png"),url("image/snow2.png"),url("image/snow3.png") ;
+            animation:snow 20s linear infinite;
+            overflow: hidden;
+        }
+        div.sayHello{
+            position: absolute;
+            top: 35px;
+            left: 0;
+            right:0;
+            text-align: center;
+            color:#ffc;
+            font-size: 4em;
+            font-weight: bold;
+            text-shadow: #ffc 0 0 0.1em,#ffc 0 0 0.2em,#ffc 0 0 0.3em;
+        }
+
+        @keyframes flashing {
+            from{
+                color: aqua;
+            }
+            50%{
+                color:lightgreen;
+            }
+            100%{
+                color:lightcoral;
+            }
+        }
+
+        #words{
+            width:500px;
+            overflow: hidden;
+            position: absolute;
+            top:300px;
+            left:650px;
+            font-size: 3em;
+            display: none;
+            animation:flashing 8s linear infinite alternate;
+            background-color: rgba(10,10,10,0.7);
+            padding:15px;
+            box-shadow: 0 0 35px white;
+        }
+
+        #music-icon{
+            position: absolute;
+            top:120px;
+            right:150px;
+        }
+        #tree{
+            position: absolute;
+            top:120px;
+            left:0px;
+        }
+
+    </style>
+    <script src="jquery-3.1.0.js"></script>
+</head>
+<body>
+<img src="image/apple.png">
+<img id="music-icon" src="image/musical-notes-symbols1.png">
+<img id="tree" src="image/christmas.png">
+<audio id="myAudio" src="songs/Jingle%20Bells%20(Christmas%20Song).mp3" autoplay></audio>
+<div class="sayHello">
+    晓 懿 happy christmas
+</div>
+<div id="words">
+    Luck is such an amazing thing,<br>
+    But not many people have it<br>
+    so today I want to wish you lots of it!
+</div>
+<script src="jquery-3.1.0.js"></script>
+<script>
+    var playing=true;
+    var audio=$('#myAudio');
+    var image=$('#music-icon');
+    image.click(function () {
+        if (playing==true)
+        {
+            audio[0].pause();
+            playing=false;
+            image.attr('src',"image/musical-notes-symbols.png");
+        }
+        else
+        {
+            audio[0].play();
+            playing=true;
+            image.attr('src',"image/musical-notes-symbols1.png");
+        }
+    });
+
+    $('#words').fadeIn(4000);
+</script>
+</body>
+</html>
